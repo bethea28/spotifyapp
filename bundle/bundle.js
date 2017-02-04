@@ -4179,9 +4179,7 @@
 	
 	  switch (action.type) {
 	    case 'data':
-	      return Object.assign({}, state, { money: state.money += action.data }
-	      // console.log(state.money)
-	      );
+	      return Object.assign({}, state, { money: state.money += action.data });
 	    case 'hand':
 	      return Object.assign({}, state, { cash: state.cash += action.data });
 	    default:
@@ -23824,6 +23822,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var App = function App(props) {
+	
 	  // console.log(props.money)
 	  // console.log(props.money)
 	  return _react2.default.createElement(
@@ -23852,7 +23851,6 @@
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	
 	    // var text = event.target.value
 	    getData: function getData(event) {
 	      var text = event.target.value;

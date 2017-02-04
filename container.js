@@ -5,10 +5,13 @@ import {connect} from 'react-redux'
 
 
 
-const mapStateToProps = store =>({
+const mapStateToProps = store =>{
+ return {
+  
   text:store.text,
   cards:store.cards
-})
+ }
+}
 
 const mapDispatchToProps = dispatch =>({
   addArtist: (event) => {  dispatch(addArtist())},

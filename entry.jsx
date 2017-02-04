@@ -6,12 +6,14 @@ import {render} from 'react-dom'
 import App from './app'
 
 
-const Visual = ()=>(
+const Visual = ()=>{
+ return(
 
   <Provider store ={store}>
     <App />
   </Provider>
-)
+  )
+}
 
 
 
