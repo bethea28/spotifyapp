@@ -1,31 +1,34 @@
-const webpack = require('webpack');
-// const LiveReloadPlugin = require('webpack-livereload-plugin');
+const path = require("path");
 
 module.exports = {
-  entry: ["./entry.jsx"],
+  context: __dirname,
+  entry: "./components/entry.jsx",
   output: {
-    path: __dirname + "/bundle",
-    filename: "bundle.js",
-    devtoolModuleFilenameTemplate: '[resourcePath]',
-    devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
+    path: path.join(__dirname, './public'),
+    filename: "bundle.js"
   },
   module: {
     loaders: [
+     { test: /\.css$/, loader: "style-loader!css-loader" },
       {
         test: [/\.jsx?$/, /\.js?$/],
-        exclude: /(node_modules)/,
+        exclude: /(node_modules|bower_components)/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', `react`]
         }
+      },
+      {
+        test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        loader: 'file'
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: 'source-maps',
   resolve: {
-    extensions: ["", ".js", ".jsx" ]
+    extensions: ["", ".js", ".jsx"]
   },
-  // plugins: [
-  //   new LiveReloadPlugin()
-  // ]
+  resolveLoader: {
+    moduleExtensions: ['-loader']
+}
 };
