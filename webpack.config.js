@@ -2,14 +2,17 @@ const path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "./components/entry.jsx",
+  entry: "./client/components/entry.jsx",
   output: {
     path: path.join(__dirname, './public'),
     filename: "bundle.js"
   },
   module: {
     loaders: [
-     { test: /\.css$/, loader: "style-loader!css-loader" },
+      {
+        test: [/\.scss$/, /\.css$/],
+        loaders: ['style', 'css', 'sass'],
+      },
       {
         test: [/\.jsx?$/, /\.js?$/],
         exclude: /(node_modules|bower_components)/,
@@ -24,11 +27,11 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-maps',
+  devtool: 'source-map',
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx"],
   },
   resolveLoader: {
     moduleExtensions: ['-loader']
-}
+  },
 };
