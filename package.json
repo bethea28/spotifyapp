@@ -39,7 +39,7 @@
     "sequelize-cli": "^2.6.0",
     "style-loader": "^0.15.0",
     "thunk": "0.0.1",
-    "webpack": "^2.1.0-beta.22"
+    "webpack": "^1.12.4"
   },
   "devDependencies": {
     "eslint": "^3.18.0",

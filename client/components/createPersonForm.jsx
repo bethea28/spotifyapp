@@ -8,13 +8,16 @@ class CreatePersonForm extends Component {
   constructor(props){
     super(props)
     this.state = {
-      name: '',
-      age: null,
-      favoriteCity: ''
+      name: props.name,
+      age: props.age,
+      favoriteCity: props.favoriteCity
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.submit = this.submit.bind(this)
+  }
+  componentWillReceiveProps({ name, age, favoriteCity }) {
+    this.setState({ name, age, favoriteCity })
   }
 
   handleChange(event){
@@ -33,29 +36,38 @@ class CreatePersonForm extends Component {
   }
 
   render(){
+    console.log(this.state)
     return (
       <div>
-        <form onSubmit= {this.submit}>
-          <input
-            onChange={this.handleChange}
-            type='text'
-            placeholder='Name'
-            name='name'
-          />
-          <input
-            onChange={this.handleChange}
-            type='text'
-            placeholder='Favorite City'
-            name='favoriteCity'
-          />
-          <input
-            onChange={this.handleChange}
-            type='text'
-            placeholder='Age'
-            name='age'
-          />
-        <button>Submit</button>
-        </form>
+        <div>
+
+          <form style = {{display:"flex", justifyContent:'center'}}onSubmit= {this.submit}>
+            <input
+              onChange={this.handleChange}
+              type='text'
+              placeholder='Name'
+              name='name'
+              value= {this.state.name || ''}
+            />
+            <input
+              onChange={this.handleChange}
+              type='text'
+              placeholder='Favorite City'
+              name='favoriteCity'
+              value= {this.state.favoriteCity || ''}
+
+            />
+            <input
+              onChange={this.handleChange}
+              type='text'
+              placeholder='Age'
+              name='age'
+              value= {this.state.age || ''}
+
+            />
+          <button>Submit</button>
+          </form>
+        </div>
       </div>
     )
   }
