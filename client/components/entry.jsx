@@ -3,18 +3,20 @@ import store from '../store/store';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
-// import CreatePersonForm from './createPerson';
-import Home from './Home';
-// import UpdatePerson from './updatePerson';
-import { getEveryone } from './action';
+import ShowProfile from './showProfile';
+import DisplayPerson from './displayPerson';
+import Home from './home';
+import { getEveryone, getPersonById } from './action';
 
 const routes = (
-   <Route path = '/' >
-     <IndexRoute onEnter={getEveryone} component={Home} />
-   </Route>
+  <Route path = '/' >
+    <IndexRoute onEnter={getEveryone} component={Home} />
+    <Route path="/getPersonById/:personId" onEnter={getEveryone} component={ShowProfile}>
+      <IndexRoute onEnter={getPersonById} component={DisplayPerson}/>
+    </Route>
+  </Route>
 )
 //  <Route path = "/getPerson" component = {CreatePersonForm}/>
-//  <Route path = "/getPersonById/:id" component = {GetPersonById}/>
 //  <Route path = "/updatePerson/:id" component = {UpdatePerson}/>
 render(
   <Provider store={store}>

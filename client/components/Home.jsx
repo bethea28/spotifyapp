@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import DisplayPerson from './displayPerson';
+import CreatePersonForm from './createPersonForm';
 
 class Home extends Component {
   constructor(){
@@ -14,12 +15,12 @@ class Home extends Component {
 
   render(){
     const { people } = this.props;
-    console.log(people)
     return(
       <div>
         <div>
           <h1>WELCOME TO PHONE BOOK</h1>
         </div>
+        <CreatePersonForm />
         {people && people.map(person => (
           <DisplayPerson key={person.id} {...person} listPerson/>
         ))}
@@ -41,4 +42,4 @@ const mapDispatchToProps = (dispatch) => (
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(Home);

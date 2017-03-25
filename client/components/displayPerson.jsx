@@ -1,45 +1,44 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import CreatePersonForm from './createPersonForm';
 
 class DisplayPerson extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       updating: false,
+      name: props.name,
+      age: props.age,
+      favoriteCity: props.favoriteCity,
     }
     this.update = this.update.bind(this);
+    this.updateInfo = this.updateInfo.bind(this);
     this.delete = this.delete.bind(this);
+  }
+  componentWillReceiveProps({ name, age, favoriteCity }) {
+    this.setState({ name, age, favoriteCity })
   }
 
   update() {
-    const { id, name, age, favoriteCity, listPerson } = this.props;
-    if (this.state.updating) {
-      axios.put(`/api/person/'${this.props.params.id}`, {
-        name,
-        age,
-        favoriteCity,
-      })
-      .then((data) => {
-        console.log('work update');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    };
     this.setState( prevState => ({
       updating: !prevState.updating,
     }));
   }
-
+  updateInfo({name, age, favoriteCity}) {
+    this.setState(prevState => ({
+      name,
+      age,
+      favoriteCity,
+      updating: !prevState.updating,
+    }))
+  }
   delete() {
-    axios.delete('/api/person/' + this.props.params.id, {
-
-    })
-    .then((data) => {
-      // this.setState({person: data.data})
-      // console.log(data.data);
+    const id = this.props.params.personId || this.props.id;
+    axios.delete(`/api/person/${id}`)
+    .then(() => {
       this.props.router.push('/')
     })
     .catch((error) => {
@@ -48,12 +47,12 @@ class DisplayPerson extends Component {
   }
 
   render () {
-    const { id, name, age, favoriteCity, listPerson } = this.props;
-    const { updating } = this.state;
+    const { id, listPerson } = this.props;
+    const { updating, name, age, favoriteCity, } = this.state;
     return (
       <li className={listPerson ? 'list_person' : 'show_person'}>
         { updating
-        ? <CreatePersonForm />
+        ? <CreatePersonForm id={id} update updateParent={this.updateInfo} />
         : (
           <div>
             <Link to= {`/getPersonById/${id}`}>{name}</Link>
@@ -61,11 +60,26 @@ class DisplayPerson extends Component {
             <p>{favoriteCity}</p>
           </div>
         )}
-        <button onClick={this.update}>{updating ? 'Save' : 'Update'}</button>
+        <button onClick={this.update}>{updating ? 'Cancel' : 'Update'}</button>
         <button onClick={this.delete}>Delete</button>
       </li>
     );
   }
 }
 
-export default DisplayPerson;
+const mapStateToProps = (state, ownProps) => ({
+  name: ownProps.name || state.name,
+  age: ownProps.age || state.age,
+  favoriteCity: ownProps.favoriteCity || state.favoriteCity,
+});
+
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+
+  }, dispatch)
+);
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DisplayPerson));

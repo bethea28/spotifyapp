@@ -1,29 +1,27 @@
-import store from '../store/store'
+import store from '../store/store';
 
 const defaultState = {
-  name: '',
-  favoriteCity: '',
-  age: null,
-  description: '',
   people: null,
-}
+  name: '',
+  age: null,
+  favoriteCity: '',
+};
 
 
 const Reducer = (state = defaultState, action) => {
   switch(action.type){
 
-    case 'NAME':
-      return Object.assign({}, state, { name: action.data });
-
-    case 'CITY':
-      return Object.assign({}, state, { favoriteCity: action.data });
-
-    case 'AGE':
-      return Object.assign({}, state, { age: action.data });
-
     case 'GET_EVERYONE':
       return Object.assign({}, state, { people: action.data });
 
+    case 'GET_PERSON':
+      return Object.assign({}, state, {
+        name: action.data.name,
+        age: action.data.age,
+        favoriteCity: action.data.favoriteCity,
+      });
+    case 'ADD_PERSON': 
+      return Object.assign({}, state, { people: [...state.people, action.data] })
     default:
       return state;
   }

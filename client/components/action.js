@@ -20,27 +20,37 @@ export const handleAge = data => ({
   data,
 })
 
-export const handleDescription = data => ({
-  type: "DESCRIPTION",
+export const addPerson = data => ({
+  type: "ADD_PERSON",
   data,
 })
 
-export const createPerson = (name, favoriteCity, age) => dispatch => {
-
-  console.log('im in getUserServer')
-
+export const createPerson = ({name, favoriteCity, age}) => dispatch => {
   axios.post('/api/person', {
     name: name,
     favoriteCity: favoriteCity,
     age: age,
   })
-  .then((data) => {
-    console.log('it woked', data);
+  .then(({ data }) => {
+    dispatch(addPerson(data));
   })
   .catch((error) => {
     console.log(error);
   });
+};
 
+export const updatePerson = ({name, favoriteCity, age, id}) => dispatch => {
+  axios.put(`/api/person/${id}`, {
+    name,
+    age,
+    favoriteCity,
+  })
+  .then((data) => {
+    console.log('work update', data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 };
 
 export const everyone = data => ({
@@ -59,4 +69,24 @@ export const getEveryoneAsync = () => (dispatch) => {
 };
 export const getEveryone = () => {
   store.dispatch(getEveryoneAsync());
+};
+
+export const getPerson = data => ({
+  type: "GET_PERSON",
+  data,
+});
+
+// thunk action
+// getState can also be pass thru as an argument after dispatch
+export const getPersonByIdAsync = (personId) => (dispatch) => {
+  axios.get(`/api/person/${personId}`)
+  .then(({ data }) => {
+    dispatch(getPerson(data))
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+};
+export const getPersonById = (nextState) => {
+  store.dispatch(getPersonByIdAsync(nextState.params.personId));
 };
