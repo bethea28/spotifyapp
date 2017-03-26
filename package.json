@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "heroku-postbuild": "node_modules/.bin/webpack --config ./webpack.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently -k 'node_modules/.bin/nodemon start.js' 'node_modules/.bin/webpack  --watch --config ./webpack.config.js'"
   },
@@ -43,6 +44,5 @@
   "engines": {
   "node": "7.4.0"
   },
-  "heroku-postbuild": "node_modules/.bin/webpack --config ./webpack.config.js --progress"
 
 }
