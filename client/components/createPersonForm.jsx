@@ -42,6 +42,7 @@ class CreatePersonForm extends Component {
         <div>
 
           <form style = {{display:"flex", justifyContent:'center'}}onSubmit= {this.submit}>
+
             <input
               onChange={this.handleChange}
               type='text'
@@ -67,6 +68,9 @@ class CreatePersonForm extends Component {
             />
           <button>Submit</button>
           </form>
+        </div>
+        <div style ={{height: 100}}>
+
         </div>
       </div>
     )

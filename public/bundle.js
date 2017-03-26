@@ -68,11 +68,11 @@
 	
 	var _displayPerson2 = _interopRequireDefault(_displayPerson);
 	
-	var _home = __webpack_require__(300);
+	var _home = __webpack_require__(301);
 	
 	var _home2 = _interopRequireDefault(_home);
 	
-	var _action = __webpack_require__(301);
+	var _action = __webpack_require__(300);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -28988,66 +28988,75 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { style: { display: 'flex', justifyContent: 'center' } },
+	        null,
 	        _react2.default.createElement(
-	          'ul',
-	          { className: listPerson ? 'list_person' : 'show_person' },
-	          updating ? _react2.default.createElement(_createPersonForm2.default, _extends({ id: id, update: true, updateParent: this.updateInfo }, this.state)) : _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
+	          'h1',
+	          { style: { display: 'flex', justifyContent: "center", marginTop: 50 } },
+	          'PEOPLE'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: { display: 'flex', justifyContent: 'center' } },
+	          _react2.default.createElement(
+	            'ul',
+	            { className: listPerson ? 'list_person' : 'show_person' },
+	            updating ? _react2.default.createElement(_createPersonForm2.default, _extends({ id: id, update: true, updateParent: this.updateInfo }, this.state)) : _react2.default.createElement(
 	              'div',
-	              { style: { display: 'flex', flexDirection: 'row' } },
+	              null,
 	              _react2.default.createElement(
-	                'h3',
-	                null,
-	                'NAME:'
+	                'div',
+	                { style: { display: 'flex', flexDirection: 'row' } },
+	                _react2.default.createElement(
+	                  'h3',
+	                  null,
+	                  'NAME:'
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { style: { marginTop: 20, marginLeft: 10 }, to: '/getPersonById/' + id },
+	                  ' ',
+	                  name
+	                )
 	              ),
 	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { style: { marginTop: 20, marginLeft: 10 }, to: '/getPersonById/' + id },
-	                ' ',
-	                name
+	                'div',
+	                { style: { display: 'flex', flexDirection: 'row' } },
+	                _react2.default.createElement(
+	                  'h3',
+	                  null,
+	                  'AGE:'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { style: { marginTop: 20, marginLeft: 10 } },
+	                  age
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { style: { display: 'flex', flexDirection: 'row' } },
+	                _react2.default.createElement(
+	                  'h3',
+	                  null,
+	                  'FAVORITE CITY:'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { style: { marginTop: 20, marginLeft: 10 } },
+	                  favoriteCity
+	                )
 	              )
 	            ),
 	            _react2.default.createElement(
-	              'div',
-	              { style: { display: 'flex', flexDirection: 'row' } },
-	              _react2.default.createElement(
-	                'h3',
-	                null,
-	                'AGE:'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { style: { marginTop: 20, marginLeft: 10 } },
-	                age
-	              )
+	              'button',
+	              { style: { marginRight: 10 }, onClick: this.update },
+	              updating ? 'Cancel' : 'Update'
 	            ),
 	            _react2.default.createElement(
-	              'div',
-	              { style: { display: 'flex', flexDirection: 'row' } },
-	              _react2.default.createElement(
-	                'h3',
-	                null,
-	                'FAVORITE CITY:'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { style: { marginTop: 20, marginLeft: 10 } },
-	                favoriteCity
-	              )
+	              'button',
+	              { onClick: this.delete },
+	              'Delete'
 	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { style: { marginRight: 10 }, onClick: this.update },
-	            updating ? 'Cancel' : 'Update'
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: this.delete },
-	            'Delete'
 	          )
 	        )
 	      );
@@ -30582,7 +30591,7 @@
 	
 	var _redux = __webpack_require__(33);
 	
-	var _action = __webpack_require__(301);
+	var _action = __webpack_require__(300);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30681,7 +30690,8 @@
 	              'Submit'
 	            )
 	          )
-	        )
+	        ),
+	        _react2.default.createElement('div', { style: { height: 100 } })
 	      );
 	    }
 	  }]);
@@ -30708,104 +30718,6 @@
 
 /***/ },
 /* 300 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(56);
-	
-	var _redux = __webpack_require__(33);
-	
-	var _reactRouter = __webpack_require__(219);
-	
-	var _displayPerson = __webpack_require__(273);
-	
-	var _displayPerson2 = _interopRequireDefault(_displayPerson);
-	
-	var _createPersonForm = __webpack_require__(299);
-	
-	var _createPersonForm2 = _interopRequireDefault(_createPersonForm);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Home = function (_Component) {
-	  _inherits(Home, _Component);
-	
-	  function Home() {
-	    _classCallCheck(this, Home);
-	
-	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
-	
-	    _this.state = {
-	      updating: false
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(Home, [{
-	    key: 'render',
-	    value: function render() {
-	      var people = this.props.people;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'center',
-	            null,
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'WELCOME TO PHONE BOOK'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_createPersonForm2.default, null),
-	        people && people.map(function (person) {
-	          return _react2.default.createElement(_displayPerson2.default, _extends({ key: person.id }, person, { listPerson: true }));
-	        })
-	      );
-	    }
-	  }]);
-	
-	  return Home;
-	}(_react.Component);
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    people: state.people
-	  };
-	};
-	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	  return (0, _redux.bindActionCreators)({}, dispatch);
-	};
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
-
-/***/ },
-/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30943,6 +30855,104 @@
 	var getPersonById = exports.getPersonById = function getPersonById(nextState) {
 	  _store2.default.dispatch(getPersonByIdAsync(nextState.params.personId));
 	};
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(56);
+	
+	var _redux = __webpack_require__(33);
+	
+	var _reactRouter = __webpack_require__(219);
+	
+	var _displayPerson = __webpack_require__(273);
+	
+	var _displayPerson2 = _interopRequireDefault(_displayPerson);
+	
+	var _createPersonForm = __webpack_require__(299);
+	
+	var _createPersonForm2 = _interopRequireDefault(_createPersonForm);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Home = function (_Component) {
+	  _inherits(Home, _Component);
+	
+	  function Home() {
+	    _classCallCheck(this, Home);
+	
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+	
+	    _this.state = {
+	      updating: false
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Home, [{
+	    key: 'render',
+	    value: function render() {
+	      var people = this.props.people;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'center',
+	            null,
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'WELCOME TO PHONE BOOK'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_createPersonForm2.default, null),
+	        people && people.map(function (person) {
+	          return _react2.default.createElement(_displayPerson2.default, _extends({ key: person.id }, person, { listPerson: true }));
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return Home;
+	}(_react.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    people: state.people
+	  };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return (0, _redux.bindActionCreators)({}, dispatch);
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
 
 /***/ }
 /******/ ]);
