@@ -58,28 +58,28 @@ class DisplayPerson extends Component {
 
       <div style = {{display: 'flex', justifyContent: 'center'}}>
 
-      <ul className={listPerson ? 'list_person' : 'show_person'} >
+      <ul className={listPerson ? 'list_person' : 'show_person'} style={{display: 'flex', flexDirection: 'row', width:'60%'}}>
         { updating
         ? <CreatePersonForm id={id} update updateParent={this.updateInfo} {...this.state}/>
         : (
-          <div >
-            <div style = {{display: 'flex', flexDirection: 'row'}}>
+          <div style={{border: '1px solid red', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '80%'}}>
+            <div style = {{display: 'flex', flexDirection: 'row', border: '1px solid red'}}>
               <h3 >NAME:</h3>
               <Link  style = {{marginTop: 20, marginLeft: 10}}to= {`/getPersonById/${id}`}> {name}</Link>
 
             </div>
-            <div style = {{display: 'flex', flexDirection: 'row'}}>
+            <div style = {{display: 'flex', flexDirection: 'row', border: '1px solid red'}}>
               <h3 >AGE:</h3>
               <p style = {{marginTop: 20, marginLeft: 10}}>{age}</p>
 
             </div>
-              <div style = {{display: 'flex', flexDirection: 'row'}}>
+              <div style={{display: 'flex', flexDirection: 'row', border: '1px solid red'}}>
                 <h3>FAVORITE CITY:</h3>
                 <p style = {{marginTop: 20, marginLeft: 10}}>{favoriteCity}</p>
               </div>
           </div>
         )}
-        <button style = {{marginRight: 10}}onClick={this.update}>{updating ? 'Cancel' : 'Update'}</button>
+        <button style ={{marginRight: 10, border: 'none', backgroundColor: 'lightblue', borderRadius: 20, width: '10%'}}onClick={this.update}>{updating ? 'Cancel' : 'Update'}</button>
         <button onClick={this.delete}>Delete</button>
       </ul>
     </div>

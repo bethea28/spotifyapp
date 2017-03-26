@@ -20,6 +20,10 @@ class Home extends Component {
         <div>
 
         </div>
+          <center>
+            <h2>Create Person</h2>
+
+          </center>
         <CreatePersonForm />
         {people && people.map(person => (
           <DisplayPerson key={person.id} {...person} listPerson/>

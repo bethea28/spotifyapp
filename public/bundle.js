@@ -29012,13 +29012,13 @@
 	          { style: { display: 'flex', justifyContent: 'center' } },
 	          _react2.default.createElement(
 	            'ul',
-	            { className: listPerson ? 'list_person' : 'show_person' },
+	            { className: listPerson ? 'list_person' : 'show_person', style: { display: 'flex', flexDirection: 'row', width: '60%' } },
 	            updating ? _react2.default.createElement(_createPersonForm2.default, _extends({ id: id, update: true, updateParent: this.updateInfo }, this.state)) : _react2.default.createElement(
 	              'div',
-	              null,
+	              { style: { border: '1px solid red', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '80%' } },
 	              _react2.default.createElement(
 	                'div',
-	                { style: { display: 'flex', flexDirection: 'row' } },
+	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red' } },
 	                _react2.default.createElement(
 	                  'h3',
 	                  null,
@@ -29033,7 +29033,7 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { style: { display: 'flex', flexDirection: 'row' } },
+	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red' } },
 	                _react2.default.createElement(
 	                  'h3',
 	                  null,
@@ -29047,7 +29047,7 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { style: { display: 'flex', flexDirection: 'row' } },
+	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red' } },
 	                _react2.default.createElement(
 	                  'h3',
 	                  null,
@@ -29062,7 +29062,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'button',
-	              { style: { marginRight: 10 }, onClick: this.update },
+	              { style: { marginRight: 10, border: 'none', backgroundColor: 'lightblue', borderRadius: 20, width: '10%' }, onClick: this.update },
 	              updating ? 'Cancel' : 'Update'
 	            ),
 	            _react2.default.createElement(
@@ -30672,15 +30672,7 @@
 	          'div',
 	          null,
 	          _react2.default.createElement('div', { style: { height: 30 } }),
-	          _react2.default.createElement(
-	            'center',
-	            null,
-	            _react2.default.createElement(
-	              'h3',
-	              null,
-	              'Create Person'
-	            )
-	          ),
+	          _react2.default.createElement('center', null),
 	          _react2.default.createElement(
 	            'form',
 	            { style: { display: "flex", justifyContent: 'center' }, onSubmit: this.submit },
@@ -30942,6 +30934,15 @@
 	        'div',
 	        null,
 	        _react2.default.createElement('div', null),
+	        _react2.default.createElement(
+	          'center',
+	          null,
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Create Person'
+	          )
+	        ),
 	        _react2.default.createElement(_createPersonForm2.default, null),
 	        people && people.map(function (person) {
 	          return _react2.default.createElement(_displayPerson2.default, _extends({ key: person.id }, person, { listPerson: true }));
