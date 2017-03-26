@@ -41,6 +41,7 @@ class CreatePersonForm extends Component {
             type='text'
             placeholder='Name'
             name='name'
+            value={this.state.name}
           />
           <input
             onChange={this.handleChange}
