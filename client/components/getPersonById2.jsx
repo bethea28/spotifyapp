@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+pimport React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {handleCity} from './action'
 import {handleName} from './action'

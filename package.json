@@ -22,7 +22,6 @@
     "express": "^4.15.2",
     "express-router": "0.0.1",
     "global": "^4.3.1",
-    "jquery": "^3.2.1",
     "node-sass": "^4.5.1",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
@@ -40,12 +39,5 @@
     "style-loader": "^0.15.0",
     "thunk": "0.0.1",
     "webpack": "^1.12.4"
-  },
-  "devDependencies": {
-    "eslint": "^3.18.0",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3"
   }
 }

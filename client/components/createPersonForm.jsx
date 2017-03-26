@@ -40,7 +40,6 @@ class CreatePersonForm extends Component {
     return (
       <div>
         <div>
-
           <form style = {{display:"flex", justifyContent:'center'}}onSubmit= {this.submit}>
 
             <input
@@ -66,7 +65,7 @@ class CreatePersonForm extends Component {
               value= {this.state.age || ''}
 
             />
-          <button>Submit</button>
+            <button>Submit</button>
           </form>
         </div>
         <div style ={{height: 100}}>
