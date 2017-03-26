@@ -5,10 +5,13 @@ import DisplayPerson from './displayPerson';
 
 const ShowProfile = ({ children, people }) => {
   return (
-    <div>
+    <div style = {{backgroundColor: "yellow"}}>
       {children}
       {people && people.map(person => (
-        <Link key={person.id} to={`/getPersonById/${person.id}`}>{person.name}</Link>
+        <div style = {{display: 'flex', justifyContent: 'center'}}>
+
+          <div><Link key={person.id} to={`/getPersonById/${person.id}`}> <h1 style = {{flexWrap: 'wrap'}}>{person.name} </h1></Link> </div>
+        </div>
       ))}
     </div>
   );

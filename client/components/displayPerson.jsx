@@ -51,8 +51,12 @@ class DisplayPerson extends Component {
     const { id, listPerson } = this.props;
     const { updating, name, age, favoriteCity, } = this.state;
     return (
-      <div style = {{display: 'flex', justifyContent: 'center'}}>
+    <div>
 
+
+
+
+      <div style = {{display: 'flex', justifyContent: 'center'}}>
 
       <ul className={listPerson ? 'list_person' : 'show_person'} >
         { updating
@@ -78,6 +82,7 @@ class DisplayPerson extends Component {
         <button style = {{marginRight: 10}}onClick={this.update}>{updating ? 'Cancel' : 'Update'}</button>
         <button onClick={this.delete}>Delete</button>
       </ul>
+    </div>
     </div>
     );
   }
