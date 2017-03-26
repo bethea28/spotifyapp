@@ -72,13 +72,17 @@
 	
 	var _home2 = _interopRequireDefault(_home);
 	
+	var _navbar = __webpack_require__(302);
+	
+	var _navbar2 = _interopRequireDefault(_navbar);
+	
 	var _action = __webpack_require__(300);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var routes = _react2.default.createElement(
 	  _reactRouter.Route,
-	  { path: '/' },
+	  { path: '/', component: _navbar2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { onEnter: _action.getEveryone, component: _home2.default }),
 	  _react2.default.createElement(
 	    _reactRouter.Route,
@@ -86,8 +90,7 @@
 	    _react2.default.createElement(_reactRouter.IndexRoute, { onEnter: _action.getPersonById, component: _displayPerson2.default })
 	  )
 	);
-	//  <Route path = "/getPerson" component = {CreatePersonForm}/>
-	//  <Route path = "/updatePerson/:id" component = {UpdatePerson}/>
+	
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRedux.Provider,
 	  { store: _store2.default },
@@ -28847,13 +28850,28 @@
 	
 	  return _react2.default.createElement(
 	    'div',
-	    null,
+	    { style: { backgroundColor: "yellow" } },
 	    children,
 	    people && people.map(function (person) {
 	      return _react2.default.createElement(
-	        _reactRouter.Link,
-	        { key: person.id, to: '/getPersonById/' + person.id },
-	        person.name
+	        'div',
+	        { style: { display: 'flex', justifyContent: 'center' } },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { key: person.id, to: '/getPersonById/' + person.id },
+	            ' ',
+	            _react2.default.createElement(
+	              'h1',
+	              { style: { flexWrap: 'wrap' } },
+	              person.name,
+	              ' '
+	            )
+	          ),
+	          ' '
+	        )
 	      );
 	    })
 	  );
@@ -28989,11 +29007,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          { style: { display: 'flex', justifyContent: "center", marginTop: 50 } },
-	          'PEOPLE'
-	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { style: { display: 'flex', justifyContent: 'center' } },
@@ -30658,6 +30671,16 @@
 	        _react2.default.createElement(
 	          'div',
 	          null,
+	          _react2.default.createElement('div', { style: { height: 30 } }),
+	          _react2.default.createElement(
+	            'center',
+	            null,
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Create Person'
+	            )
+	          ),
 	          _react2.default.createElement(
 	            'form',
 	            { style: { display: "flex", justifyContent: 'center' }, onSubmit: this.submit },
@@ -30918,19 +30941,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'center',
-	            null,
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'WELCOME TO PHONE BOOK'
-	            )
-	          )
-	        ),
+	        _react2.default.createElement('div', null),
 	        _react2.default.createElement(_createPersonForm2.default, null),
 	        people && people.map(function (person) {
 	          return _react2.default.createElement(_displayPerson2.default, _extends({ key: person.id }, person, { listPerson: true }));
@@ -30953,6 +30964,60 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(219);
+	
+	var _home = __webpack_require__(301);
+	
+	var _home2 = _interopRequireDefault(_home);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Navbar = function Navbar(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { style: { backgroundColor: 'yellow' } },
+	    _react2.default.createElement(
+	      'ul',
+	      { style: { display: 'flex', flexDirection: 'row', justifyContent: 'center' } },
+	      _react2.default.createElement(
+	        'ul',
+	        { style: { fontSize: 20, width: 350, height: 50, marginRight: 100, display: 'flex', justifyContent: 'center', backgroundColor: 'orange', borderRadius: 10 } },
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          'Home'
+	        )
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'center',
+	      null,
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'WELCOME TO PHONE BOOK'
+	      )
+	    ),
+	    props.children
+	  );
+	};
+	
+	exports.default = Navbar;
 
 /***/ }
 /******/ ]);

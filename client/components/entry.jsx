@@ -6,18 +6,18 @@ import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 import ShowProfile from './showProfile';
 import DisplayPerson from './displayPerson';
 import Home from './home';
+import Navbar from './navbar';
 import { getEveryone, getPersonById } from './action';
 
 const routes = (
-  <Route path = '/' >
+  <Route path = '/' component={Navbar} >
     <IndexRoute onEnter={getEveryone} component={Home} />
     <Route path="/getPersonById/:personId" onEnter={getEveryone} component={ShowProfile}>
       <IndexRoute onEnter={getPersonById} component={DisplayPerson}/>
     </Route>
   </Route>
 )
-//  <Route path = "/getPerson" component = {CreatePersonForm}/>
-//  <Route path = "/updatePerson/:id" component = {UpdatePerson}/>
+
 render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />

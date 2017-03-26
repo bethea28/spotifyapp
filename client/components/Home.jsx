@@ -18,10 +18,7 @@ class Home extends Component {
     return(
       <div>
         <div>
-          <center>
-            <h1 >WELCOME TO PHONE BOOK</h1>
-
-          </center>
+      
         </div>
         <CreatePersonForm />
         {people && people.map(person => (

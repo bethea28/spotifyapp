@@ -40,6 +40,13 @@ class CreatePersonForm extends Component {
     return (
       <div>
         <div>
+          <div style = {{height: 30}}>
+
+          </div>
+          <center>
+            <h3>Create Person</h3>
+
+          </center>
           <form style = {{display:"flex", justifyContent:'center'}}onSubmit= {this.submit}>
 
             <input

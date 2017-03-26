@@ -54,7 +54,7 @@ class DisplayPerson extends Component {
     <div>
 
 
-        <h1 style = {{display:'flex', justifyContent: "center", marginTop: 50}}>PEOPLE</h1>
+
 
       <div style = {{display: 'flex', justifyContent: 'center'}}>
 
