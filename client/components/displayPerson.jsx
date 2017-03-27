@@ -74,7 +74,7 @@ class DisplayPerson extends Component {
             <div style={{border: '1px solid red', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '80%'}}>
               <div style = {{display: 'flex', flexDirection: 'row', border: '1px solid red', width: 150}}>
                 <h3 >NAME:</h3>
-                <Link  style = {{marginTop: 20, marginLeft: 10}}to= {`/getPersonById/${id}`}> {name}</Link>
+                <Link  style = {{textDecoration: 'none', marginTop: 20, marginLeft: 10}}to= {`/getPersonById/${id}`}> {name}</Link>
 
               </div>
               <div style = {{display: 'flex', flexDirection: 'row', border: '1px solid red', width: 150}}>

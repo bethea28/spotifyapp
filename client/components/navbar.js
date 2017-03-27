@@ -9,7 +9,7 @@ const Navbar = (props) => {
 
         <div style = {{ display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
 
-          <ul style = {{ marginRight: 40, fontSize: 20, width: 400, height: 50,  display: 'flex', justifyContent: 'center'}}><Link to = {'/'}>Home</Link></ul>
+          <ul style = {{ marginRight: 40, fontSize: 20, width: 400, height: 50,  display: 'flex', justifyContent: 'center'}}><Link  style = {{color: 'red', textDecoration: 'none'}}to = {'/'}>Home</Link></ul>
 
         </div>
 

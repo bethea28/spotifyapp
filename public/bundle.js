@@ -29033,7 +29033,7 @@
 	                ),
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { style: { marginTop: 20, marginLeft: 10 }, to: '/getPersonById/' + id },
+	                  { style: { textDecoration: 'none', marginTop: 20, marginLeft: 10 }, to: '/getPersonById/' + id },
 	                  ' ',
 	                  name
 	                )
@@ -31006,7 +31006,7 @@
 	        { style: { marginRight: 40, fontSize: 20, width: 400, height: 50, display: 'flex', justifyContent: 'center' } },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: '/' },
+	          { style: { color: 'red', textDecoration: 'none' }, to: '/' },
 	          'Home'
 	        )
 	      )
