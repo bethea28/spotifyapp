@@ -30999,11 +30999,11 @@
 	    'div',
 	    { style: { backgroundColor: 'yellow' } },
 	    _react2.default.createElement(
-	      'ul',
+	      'div',
 	      { style: { display: 'flex', flexDirection: 'row', justifyContent: 'center' } },
 	      _react2.default.createElement(
 	        'ul',
-	        { style: { border: '1px solid red', fontSize: 20, width: 150, height: 50, display: 'flex', justifyContent: 'center', borderRadius: 10 } },
+	        { style: { marginRight: 40, fontSize: 20, width: 400, height: 50, display: 'flex', justifyContent: 'center' } },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: '/' },
@@ -31025,86 +31025,89 @@
 	      'center',
 	      null,
 	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Instructions'
-	      ),
-	      _react2.default.createElement(
 	        'div',
-	        null,
+	        { style: { border: '1px solid red', width: 800 } },
 	        _react2.default.createElement(
-	          'p',
+	          'h2',
 	          null,
-	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'Create A Person:'
-	          ),
-	          ' Type name, age (must be number), and favorite city into text boxes, then press ',
-	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'SUBMIT'
-	          ),
-	          '.'
+	          'Instructions'
 	        ),
 	        _react2.default.createElement(
-	          'p',
+	          'div',
 	          null,
 	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'Delete A Person:'
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'Create A Person:'
+	            ),
+	            ' Type name, age (must be number), and favorite city into text boxes, then press ',
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'SUBMIT'
+	            ),
+	            '.'
 	          ),
-	          ' Press the ',
 	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'DELETE'
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'Delete A Person:'
+	            ),
+	            ' Press the ',
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'DELETE'
+	            ),
+	            ' button.'
 	          ),
-	          ' button.'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
 	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'Update A Person:'
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'Update A Person:'
+	            ),
+	            ' Press the ',
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'UPDATE'
+	            ),
+	            ' button; Type name, age (must be number), and favorite city into text boxes, then press ',
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'SUBMIT'
+	            ),
+	            '.'
 	          ),
-	          ' Press the ',
 	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'UPDATE'
-	          ),
-	          ' button; Type name, age (must be number), and favorite city into text boxes, then press ',
-	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'SUBMIT'
-	          ),
-	          '.'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'View Person Profile:'
-	          ),
-	          ' Click on the person\'s highlighted  ',
-	          _react2.default.createElement(
-	            'span',
-	            { style: { fontWeight: "bold" } },
-	            'NAME'
-	          ),
-	          '.'
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'View Person Profile:'
+	            ),
+	            ' Click on the person\'s highlighted  ',
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold" } },
+	              'NAME'
+	            ),
+	            '.'
+	          )
 	        )
 	      )
 	    ),
-	    _react2.default.createElement('br', { style: { backgroundColor: 'red' } }),
 	    _react2.default.createElement('div', { style: { height: 50 } }),
 	    props.children
 	  );
