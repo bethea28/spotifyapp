@@ -14,7 +14,7 @@ const CreatePersonForm = (props) => {
     }
   };
   return (
-    <form onSubmit= {submitForm}>
+    <form style = {{height:100}} onSubmit= {submitForm}>
       <input onChange = {(event) => {props.handleName(event.target.value)}} type = 'text' placeholder = 'Name'/>
       <input onChange = {(event) => { props.handleCity(event.target.value)}} type = 'text' placeholder = 'Favorite City'/>
       <input onChange = {(event) => { props.handleAge(event.target.value)}} type = 'text' placeholder = 'Age'/>

@@ -28943,6 +28943,7 @@
 	    _this.update = _this.update.bind(_this);
 	    _this.updateInfo = _this.updateInfo.bind(_this);
 	    _this.delete = _this.delete.bind(_this);
+	    _this.refresh = _this.refresh.bind(_this);
 	    return _this;
 	  }
 	
@@ -28988,9 +28989,15 @@
 	      var id = this.props.params.personId || this.props.id;
 	      _axios2.default.delete('/api/person/' + id).then(function () {
 	        _this2.props.router.push('/');
+	        window.location.reload();
 	      }).catch(function (error) {
 	        console.log(error);
 	      });
+	    }
+	  }, {
+	    key: 'refresh',
+	    value: function refresh(event) {
+	      // window.location.reload()
 	    }
 	  }, {
 	    key: 'render',
@@ -29018,7 +29025,7 @@
 	              { style: { border: '1px solid red', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '80%' } },
 	              _react2.default.createElement(
 	                'div',
-	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red' } },
+	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red', width: 150 } },
 	                _react2.default.createElement(
 	                  'h3',
 	                  null,
@@ -29033,7 +29040,7 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red' } },
+	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red', width: 150 } },
 	                _react2.default.createElement(
 	                  'h3',
 	                  null,
@@ -29047,7 +29054,7 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red' } },
+	                { style: { display: 'flex', flexDirection: 'row', border: '1px solid red', width: 250 } },
 	                _react2.default.createElement(
 	                  'h3',
 	                  null,
@@ -30672,31 +30679,30 @@
 	          'div',
 	          null,
 	          _react2.default.createElement('div', { style: { height: 30 } }),
-	          _react2.default.createElement('center', null),
 	          _react2.default.createElement(
 	            'form',
 	            { style: { display: "flex", justifyContent: 'center' }, onSubmit: this.submit },
-	            _react2.default.createElement('input', {
+	            _react2.default.createElement('input', { style: { height: 50, border: '1px solid red' },
 	              onChange: this.handleChange,
 	              type: 'text',
 	              placeholder: 'Name',
 	              name: 'name',
 	              value: this.state.name || ''
 	            }),
-	            _react2.default.createElement('input', {
-	              onChange: this.handleChange,
-	              type: 'text',
-	              placeholder: 'Favorite City',
-	              name: 'favoriteCity',
-	              value: this.state.favoriteCity || ''
-	
-	            }),
-	            _react2.default.createElement('input', {
+	            _react2.default.createElement('input', { style: { height: 50, border: '1px solid red' },
 	              onChange: this.handleChange,
 	              type: 'text',
 	              placeholder: 'Age',
 	              name: 'age',
 	              value: this.state.age || ''
+	
+	            }),
+	            _react2.default.createElement('input', { style: { height: 50, border: '1px solid red' },
+	              onChange: this.handleChange,
+	              type: 'text',
+	              placeholder: 'Favorite City',
+	              name: 'favoriteCity',
+	              value: this.state.favoriteCity || ''
 	
 	            }),
 	            _react2.default.createElement(
@@ -30997,7 +31003,7 @@
 	      { style: { display: 'flex', flexDirection: 'row', justifyContent: 'center' } },
 	      _react2.default.createElement(
 	        'ul',
-	        { style: { fontSize: 20, width: 350, height: 50, marginRight: 100, display: 'flex', justifyContent: 'center', backgroundColor: 'orange', borderRadius: 10 } },
+	        { style: { border: '1px solid red', fontSize: 20, width: 150, height: 50, display: 'flex', justifyContent: 'center', borderRadius: 10 } },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: '/' },
@@ -31011,9 +31017,95 @@
 	      _react2.default.createElement(
 	        'h1',
 	        null,
-	        'WELCOME TO PHONE BOOK'
+	        'WELCOME TO CONTACT BOOK'
 	      )
 	    ),
+	    _react2.default.createElement('div', { style: { height: 20 } }),
+	    _react2.default.createElement(
+	      'center',
+	      null,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Instructions'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'Create A Person:'
+	          ),
+	          ' Type name, age (must be number), and favorite city into text boxes, then press ',
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'SUBMIT'
+	          ),
+	          '.'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'Delete A Person:'
+	          ),
+	          ' Press the ',
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'DELETE'
+	          ),
+	          ' button.'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'Update A Person:'
+	          ),
+	          ' Press the ',
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'UPDATE'
+	          ),
+	          ' button; Type name, age (must be number), and favorite city into text boxes, then press ',
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'SUBMIT'
+	          ),
+	          '.'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'View Person Profile:'
+	          ),
+	          ' Click on the person\'s highlighted  ',
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontWeight: "bold" } },
+	            'NAME'
+	          ),
+	          '.'
+	        )
+	      )
+	    ),
+	    _react2.default.createElement('br', { style: { backgroundColor: 'red' } }),
+	    _react2.default.createElement('div', { style: { height: 50 } }),
 	    props.children
 	  );
 	};

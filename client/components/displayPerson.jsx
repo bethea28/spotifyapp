@@ -18,6 +18,7 @@ class DisplayPerson extends Component {
     this.update = this.update.bind(this);
     this.updateInfo = this.updateInfo.bind(this);
     this.delete = this.delete.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
   componentWillReceiveProps({ name, age, favoriteCity }) {
     this.setState({ name, age, favoriteCity })
@@ -41,10 +42,18 @@ class DisplayPerson extends Component {
     axios.delete(`/api/person/${id}`)
     .then(() => {
       this.props.router.push('/')
+      window.location.reload()
+
+
+
     })
     .catch((error) => {
       console.log(error);
     });
+  }
+
+  refresh(event) {
+    // window.location.reload()
   }
 
   render () {
@@ -58,31 +67,32 @@ class DisplayPerson extends Component {
 
       <div style = {{display: 'flex', justifyContent: 'center'}}>
 
-      <ul className={listPerson ? 'list_person' : 'show_person'} style={{display: 'flex', flexDirection: 'row', width:'60%'}}>
-        { updating
-        ? <CreatePersonForm id={id} update updateParent={this.updateInfo} {...this.state}/>
-        : (
-          <div style={{border: '1px solid red', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '80%'}}>
-            <div style = {{display: 'flex', flexDirection: 'row', border: '1px solid red'}}>
-              <h3 >NAME:</h3>
-              <Link  style = {{marginTop: 20, marginLeft: 10}}to= {`/getPersonById/${id}`}> {name}</Link>
+        <ul className={listPerson ? 'list_person' : 'show_person'} style={{display: 'flex', flexDirection: 'row', width:'60%'}}>
+          { updating
+          ? <CreatePersonForm id={id} update updateParent={this.updateInfo} {...this.state}/>
+          : (
+            <div style={{border: '1px solid red', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '80%'}}>
+              <div style = {{display: 'flex', flexDirection: 'row', border: '1px solid red', width: 150}}>
+                <h3 >NAME:</h3>
+                <Link  style = {{marginTop: 20, marginLeft: 10}}to= {`/getPersonById/${id}`}> {name}</Link>
 
-            </div>
-            <div style = {{display: 'flex', flexDirection: 'row', border: '1px solid red'}}>
-              <h3 >AGE:</h3>
-              <p style = {{marginTop: 20, marginLeft: 10}}>{age}</p>
-
-            </div>
-              <div style={{display: 'flex', flexDirection: 'row', border: '1px solid red'}}>
-                <h3>FAVORITE CITY:</h3>
-                <p style = {{marginTop: 20, marginLeft: 10}}>{favoriteCity}</p>
               </div>
-          </div>
-        )}
-        <button style ={{marginRight: 10, border: 'none', backgroundColor: 'lightblue', borderRadius: 20, width: '10%'}}onClick={this.update}>{updating ? 'Cancel' : 'Update'}</button>
-        <button onClick={this.delete}>Delete</button>
-      </ul>
-    </div>
+              <div style = {{display: 'flex', flexDirection: 'row', border: '1px solid red', width: 150}}>
+                <h3 >AGE:</h3>
+                <p style = {{marginTop: 20, marginLeft: 10}}>{age}</p>
+
+              </div>
+                <div style={{display: 'flex', flexDirection: 'row', border: '1px solid red', width: 250}}>
+                  <h3>FAVORITE CITY:</h3>
+                  <p style = {{marginTop: 20, marginLeft: 10}}>{favoriteCity}</p>
+                </div>
+            </div>
+          )}
+          <button style ={{marginRight: 10, border: 'none', backgroundColor: 'lightblue', borderRadius: 20, width: '10%'}}onClick={this.update}>{updating ? 'Cancel' : 'Update'}</button>
+          <button onClick={this.delete}>Delete</button>
+
+        </ul>
+      </div>
     </div>
     );
   }

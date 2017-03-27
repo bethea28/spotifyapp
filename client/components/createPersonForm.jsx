@@ -43,32 +43,30 @@ class CreatePersonForm extends Component {
           <div style = {{height: 30}}>
 
           </div>
-          <center>
-
-          </center>
+        
           <form style = {{display:"flex", justifyContent:'center'}}onSubmit= {this.submit}>
 
-            <input
+            <input style = {{height: 50, border: '1px solid red'}}
               onChange={this.handleChange}
               type='text'
               placeholder='Name'
               name='name'
               value= {this.state.name || ''}
             />
-            <input
+          <input style = {{height: 50, border: '1px solid red'}}
+            onChange={this.handleChange}
+            type='text'
+            placeholder='Age'
+            name='age'
+            value= {this.state.age || ''}
+
+            />
+          <input style = {{height: 50, border: '1px solid red'}}
               onChange={this.handleChange}
               type='text'
               placeholder='Favorite City'
               name='favoriteCity'
               value= {this.state.favoriteCity || ''}
-
-            />
-            <input
-              onChange={this.handleChange}
-              type='text'
-              placeholder='Age'
-              name='age'
-              value= {this.state.age || ''}
 
             />
             <button>Submit</button>
