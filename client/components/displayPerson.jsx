@@ -20,6 +20,7 @@ class DisplayPerson extends Component {
     this.delete = this.delete.bind(this);
     this.refresh = this.refresh.bind(this);
   }
+
   componentWillReceiveProps({ name, age, favoriteCity }) {
     this.setState({ name, age, favoriteCity })
   }
@@ -68,6 +69,9 @@ class DisplayPerson extends Component {
       <div style = {{display: 'flex', justifyContent: 'center'}}>
 
         <ul className={listPerson ? 'list_person' : 'show_person'} style={{display: 'flex', flexDirection: 'row', width:'60%'}}>
+          {
+            // show the create person form if update is true or show this
+          }
           { updating
           ? <CreatePersonForm id={id} update updateParent={this.updateInfo} {...this.state}/>
           : (

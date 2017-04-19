@@ -20,7 +20,7 @@ const Reducer = (state = defaultState, action) => {
         age: action.data.age,
         favoriteCity: action.data.favoriteCity,
       });
-    case 'ADD_PERSON': 
+    case 'ADD_PERSON':
       return Object.assign({}, state, { people: [...state.people, action.data] })
     default:
       return state;

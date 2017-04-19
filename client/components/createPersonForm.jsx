@@ -8,21 +8,27 @@ class CreatePersonForm extends Component {
   constructor(props){
     super(props)
     this.state = {
-      name: props.name,
-      age: props.age,
-      favoriteCity: props.favoriteCity
+      name: '',
+      age: '',
+      favoriteCity: "props.favoriteCity"
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.submit = this.submit.bind(this)
   }
-  componentWillReceiveProps({ name, age, favoriteCity }) {
-    this.setState({ name, age, favoriteCity })
-  }
+  // componentWillReceiveProps({ name, age, favoriteCity }) {
+  //   this.setState({ name, age, favoriteCity })
+  // }
 
   handleChange(event){
+    if(event.target.name == 'age' && event.target.value == ''){
+      alert('invalid input...must be integer')
+    }
     this.setState({[event.target.name]: event.target.value})
-    console.log(this.state.name, this.state.age, this.state.favoriteCity)
+    console.log(this.state.name)
+    console.log(event.target)
+  //   console.log( this.state.age)
+  //   console.log(this.state.favoriteCity)
   }
 
   submit(event){
@@ -36,14 +42,14 @@ class CreatePersonForm extends Component {
   }
 
   render(){
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div>
         <div>
           <div style = {{height: 30}}>
 
           </div>
-        
+
           <form style = {{display:"flex", justifyContent:'center'}}onSubmit= {this.submit}>
 
             <input style = {{height: 50, border: '1px solid red'}}
@@ -52,6 +58,7 @@ class CreatePersonForm extends Component {
               placeholder='Name'
               name='name'
               value= {this.state.name || ''}
+
             />
           <input style = {{height: 50, border: '1px solid red'}}
             onChange={this.handleChange}
@@ -93,7 +100,7 @@ const mapDispatchToProps = (dispatch) => (
   }, dispatch)
 );
 
-export default withRouter(connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreatePersonForm));
+)(CreatePersonForm);

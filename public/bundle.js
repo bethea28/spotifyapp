@@ -30632,30 +30632,30 @@
 	    var _this = _possibleConstructorReturn(this, (CreatePersonForm.__proto__ || Object.getPrototypeOf(CreatePersonForm)).call(this, props));
 	
 	    _this.state = {
-	      name: props.name,
-	      age: props.age,
-	      favoriteCity: props.favoriteCity
+	      name: '',
+	      age: '',
+	      favoriteCity: "props.favoriteCity"
 	    };
 	
 	    _this.handleChange = _this.handleChange.bind(_this);
 	    _this.submit = _this.submit.bind(_this);
 	    return _this;
 	  }
+	  // componentWillReceiveProps({ name, age, favoriteCity }) {
+	  //   this.setState({ name, age, favoriteCity })
+	  // }
 	
 	  _createClass(CreatePersonForm, [{
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(_ref) {
-	      var name = _ref.name,
-	          age = _ref.age,
-	          favoriteCity = _ref.favoriteCity;
-	
-	      this.setState({ name: name, age: age, favoriteCity: favoriteCity });
-	    }
-	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(event) {
+	      if (event.target.name == 'age' && event.target.value == '') {
+	        alert('invalid input...must be integer');
+	      }
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
-	      console.log(this.state.name, this.state.age, this.state.favoriteCity);
+	      console.log(this.state.name);
+	      console.log(event.target);
+	      //   console.log( this.state.age)
+	      //   console.log(this.state.favoriteCity)
 	    }
 	  }, {
 	    key: 'submit',
@@ -30671,7 +30671,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.state);
+	      // console.log(this.state)
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -30688,6 +30688,7 @@
 	              placeholder: 'Name',
 	              name: 'name',
 	              value: this.state.name || ''
+	
 	            }),
 	            _react2.default.createElement('input', { style: { height: 50, border: '1px solid red' },
 	              onChange: this.handleChange,
@@ -30735,7 +30736,7 @@
 	  }, dispatch);
 	};
 	
-	exports.default = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(CreatePersonForm));
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(CreatePersonForm);
 
 /***/ },
 /* 300 */
@@ -30934,6 +30935,7 @@
 	  _createClass(Home, [{
 	    key: 'render',
 	    value: function render() {
+	      // people = props.people
 	      var people = this.props.people;
 	
 	      return _react2.default.createElement(

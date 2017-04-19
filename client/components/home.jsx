@@ -14,6 +14,7 @@ class Home extends Component {
   }
 
   render(){
+    // people = props.people
     const { people } = this.props;
     return(
       <div>
