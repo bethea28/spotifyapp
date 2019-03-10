@@ -32364,6 +32364,10 @@
 	
 	var _action = __webpack_require__(319);
 	
+	var _axios = __webpack_require__(293);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -32383,7 +32387,8 @@
 	    var _this = _possibleConstructorReturn(this, (CreateItem.__proto__ || Object.getPrototypeOf(CreateItem)).call(this, props));
 	
 	    _this.state = {
-	      item: ''
+	      item: '',
+	      allItems: ''
 	    };
 	    _this.handleChange = _this.handleChange.bind(_this);
 	    _this.submit = _this.submit.bind(_this);
@@ -32391,6 +32396,16 @@
 	  }
 	
 	  _createClass(CreateItem, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      _axios2.default.get('/api/item').then(function (data) {
+	        console.log('allItys', data);
+	        _this2.setState({ allItems: data.data });
+	      });
+	    }
+	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(event) {
 	      var arg = event.target.value;
@@ -32407,7 +32422,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log('stage', this.state.item);
+	      console.log('stage', this.state.allItems);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -32416,6 +32431,17 @@
 	          { onSubmit: this.submit },
 	          _react2.default.createElement('input', { name: 'item', onChange: this.handleChange, placeholder: 'create item', type: 'text' }),
 	          _react2.default.createElement('input', { type: 'submit' })
+	        ),
+	        _react2.default.createElement(
+	          'select',
+	          null,
+	          this.state.allItems && this.state.allItems.map(function (item, key) {
+	            return _react2.default.createElement(
+	              'option',
+	              null,
+	              item.name
+	            );
+	          })
 	        )
 	      );
 	    }
