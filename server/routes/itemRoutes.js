@@ -14,15 +14,15 @@ const createItem = (req, res) => {
   });
 };
 
-// const getEveryone = (req, res) => {
-//   Person.findAll()
-//   .then((data) => {
-//     res.send(data);
-//   })
-//   .catch((err) => {
-//     res.status(500).send(err.message);
-//   });
-// };
+const getAllItems = (req, res) => {
+  Item.findAll()
+  .then((data) => {
+    res.send(data);
+  })
+  .catch((err) => {
+    res.status(500).send(err.message);
+  });
+};
 
 // const getPersonById = (req, res) => {
 //   Person.findById(req.params.id)
@@ -64,7 +64,7 @@ const createItem = (req, res) => {
 
 router.route('/')
   .post(createItem)
-
+  .get(getAllItems)
 // router.route('/:id')
 //   .get(getPersonById)
 //   .delete(deletePerson)

@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 import DisplayPerson from './displayPerson';
 import CreatePersonForm from './createPersonForm';
 import CreateItem from './createItem';
-// import CreateItem from './'
 
 console.log('test', <CreateItem test = 'test'/>)
 class Home extends Component {
