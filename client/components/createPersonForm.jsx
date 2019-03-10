@@ -10,15 +10,16 @@ class CreatePersonForm extends Component {
     this.state = {
       name: '',
       age: '',
-      favoriteCity: "props.favoriteCity"
+      favoriteCity: '',
+      allItems: []
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.submit = this.submit.bind(this)
   }
-  // componentWillReceiveProps({ name, age, favoriteCity }) {
-  //   this.setState({ name, age, favoriteCity })
-  // }
+  componentWillReceiveProps({ name, age, favoriteCity }) {
+    this.setState({ name, age, favoriteCity })
+  }
 
   handleChange(event){
     if(event.target.name == 'age' && event.target.value == ''){
@@ -32,11 +33,14 @@ class CreatePersonForm extends Component {
   }
 
   submit(event){
+    console.log('getStore', store.getState())
     event.preventDefault();
     if(this.props.update) {
+      event.preventDefault();
       this.props.updatePerson(Object.assign(this.state, {id: this.props.id || this.props.params.personId }));
       this.props.updateParent(this.state);
     } else {
+      event.preventDefault();
       this.props.createPerson(this.state);
     }
   }
@@ -50,7 +54,7 @@ class CreatePersonForm extends Component {
 
           </div>
 
-          <form style = {{display:"flex", justifyContent:'center'}}onSubmit= {this.submit}>
+          <form style = {{display:"flex", justifyContent:'center'}} onSubmit= {(event)=>{this.submit(event)}}>
 
             <input style = {{height: 50, border: '1px solid red'}}
               onChange={this.handleChange}

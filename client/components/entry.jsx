@@ -7,11 +7,13 @@ import ShowProfile from './showProfile';
 import DisplayPerson from './displayPerson';
 import Home from './home';
 import Navbar from './navbar';
+import createItem from './createItem';
 import { getEveryone, getPersonById } from './action';
 
 const routes = (
   <Route path = '/' component={Navbar} >
     <IndexRoute onEnter={getEveryone} component={Home} />
+    {/* <IndexRoute onEnter={getEveryone} component={Home} /> */}
     <Route path="/getPersonById/:personId" onEnter={getEveryone} component={ShowProfile}>
       <IndexRoute onEnter={getPersonById} component={DisplayPerson}/>
     </Route>

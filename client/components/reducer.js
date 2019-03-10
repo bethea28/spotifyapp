@@ -5,13 +5,20 @@ const defaultState = {
   name: '',
   age: null,
   favoriteCity: '',
+  itemsChose: []
 };
 
 
 const Reducer = (state = defaultState, action) => {
+  console.log('reducer', state)
   switch(action.type){
-
+    case 'ITEM':
+      console.log("action", action)
+      return Object.assign({}, state, { itemsChose: state.itemsChose.concat(action.data) })
     case 'GET_EVERYONE':
+      return Object.assign({}, state, { people: action.data });
+    case 'NAME':
+      console.log('name', action.data )
       return Object.assign({}, state, { people: action.data });
 
     case 'GET_PERSON':

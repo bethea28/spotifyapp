@@ -4,20 +4,26 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import DisplayPerson from './displayPerson';
 import CreatePersonForm from './createPersonForm';
+import CreateItem from './createItem';
+// import CreateItem from './'
 
+console.log('test', <CreateItem test = 'test'/>)
 class Home extends Component {
   constructor(){
     super()
     this.state = {
       updating: false,
     }
+    this.chooseItem = this.chooseItem.bind(this)
   }
-
+  chooseItem(arg){
+    console.log('argitem', arg)
+  }
   render(){
-    // people = props.people
     const { people } = this.props;
+    console.log('allprops', this.props)
     return(
-      <div>
+      <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <div>
 
         </div>
@@ -29,6 +35,9 @@ class Home extends Component {
         {people && people.map(person => (
           <DisplayPerson key={person.id} {...person} listPerson/>
         ))}
+
+        <CreateItem />
+
       </div>
     )
   }
@@ -36,6 +45,7 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   people: state.people,
+
 });
 
 const mapDispatchToProps = (dispatch) => (

@@ -6,9 +6,13 @@ const personAction = data => ({
   data: data,
 })
 
-export const handleName = data => ({
-  type: "NAME", data: data
-})
+export const handleName = data => {
+  console.log('tesname', data)
+  return {
+    type: "NAME", data: data
+  }
+}
+
 
 export const handleCity = data => ({
   type: "CITY",
@@ -25,32 +29,51 @@ export const addPerson = data => ({
   data,
 })
 
-export const createPerson = ({name, favoriteCity, age}) => dispatch => {
+// export const addItem = data=>({
+// })
+
+export const selectChange = data => ({
+  // console.log('selectdata', data)
+  // dispatch(addItem(data))
+  type: "ITEM",
+  data
+})
+
+export const createPerson = ({ name, favoriteCity, age }) => dispatch => {
+  console.log('creatpers')
   axios.post('/api/person', {
     name: name,
     favoriteCity: favoriteCity,
     age: age,
   })
-  .then(({ data }) => {
-    dispatch(addPerson(data));
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+    .then(({ data }) => {
+      dispatch(addPerson(data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
-export const updatePerson = ({name, favoriteCity, age, id}) => dispatch => {
+export const createItem = (data) => (dispatch) => {
+  console.log('createItem', data)
+  axios.post('/api/item', {
+    name: data
+  }).then(({ data }) => {
+    console.log('item', data)
+  })
+}
+export const updatePerson = ({ name, favoriteCity, age, id }) => dispatch => {
   axios.put(`/api/person/${id}`, {
     name,
     age,
     favoriteCity,
   })
-  .then((data) => {
-    console.log('work update', data);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+    .then((data) => {
+      console.log('work update', data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const everyone = data => ({
@@ -62,10 +85,10 @@ export const everyone = data => ({
 // getState can also be pass thru as an argument after dispatch
 export const getEveryoneAsync = () => (dispatch) => {
   axios.get('/api/person')
-  .then(({ data }) => {
-    dispatch(everyone(data));
-  })
-  .catch(err => err);
+    .then(({ data }) => {
+      dispatch(everyone(data));
+    })
+    .catch(err => err);
 };
 export const getEveryone = () => {
   store.dispatch(getEveryoneAsync());
@@ -80,12 +103,12 @@ export const getPerson = data => ({
 // getState can also be pass thru as an argument after dispatch
 export const getPersonByIdAsync = (personId) => (dispatch) => {
   axios.get(`/api/person/${personId}`)
-  .then(({ data }) => {
-    dispatch(getPerson(data))
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+    .then(({ data }) => {
+      dispatch(getPerson(data))
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 export const getPersonById = (nextState) => {
   store.dispatch(getPersonByIdAsync(nextState.params.personId));

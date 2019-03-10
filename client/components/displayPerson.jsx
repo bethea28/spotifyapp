@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import CreatePersonForm from './createPersonForm';
+import CreatItem from './createItem'
 
 class DisplayPerson extends Component {
   constructor(props) {
@@ -97,6 +98,7 @@ class DisplayPerson extends Component {
 
         </ul>
       </div>
+      {/* <CreatItem/> */}
     </div>
     );
   }
