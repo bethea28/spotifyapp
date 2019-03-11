@@ -5,7 +5,12 @@ const router = require('express').Router();
 const Person = require('../db/models').Person;
 
 const createPerson = (req, res) => {
-  Person.create(req.body)
+  Person.create({
+    name: req.body.name,
+    age: req.body.age,
+    favoriteCity: req.body.favoriteCity,
+    ItemId: req.body.ItemId
+  })
   .then((data) => {
     res.send(data);
   })

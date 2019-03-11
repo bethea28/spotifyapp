@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createItem } from './action';
+import { createItem, selectChange } from './action';
 import axios from 'axios'
 
 class CreateItem extends React.Component{
@@ -13,6 +13,7 @@ class CreateItem extends React.Component{
     }
     this.handleChange = this.handleChange.bind(this)
     this.submit = this.submit.bind(this)
+    this.handleSelectChange = this.handleSelectChange.bind(this)
   }
 
   componentDidMount(){
@@ -20,6 +21,11 @@ class CreateItem extends React.Component{
       console.log('allItys', data)
       this.setState({allItems: data.data})
     })
+  }
+
+  handleSelectChange(event){
+    console.log('id',event.target.value)
+    this.props.selectChange(event.target.value)
   }
 
   handleChange(event){
@@ -42,12 +48,10 @@ class CreateItem extends React.Component{
           <input name = "item" onChange={this.handleChange} placeholder = 'create item' type= 'text'/>
           <input type= 'submit'/>
         </form>
-        <select>
-         {/* {this.state.allItems.map((item,key)=>{
-           return <option>{item.name}</option>
-         })} */}
+        <select onChange = {this.handleSelectChange}>
+        
          {this.state.allItems && this.state.allItems.map((item,key)=>{
-           return <option>{item.name}</option>
+           return <option value = {item.id}>{item.name}</option>
          })}
         </select>
       </div>
@@ -65,6 +69,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
     createItem,
+    selectChange
   }, dispatch)
 );
 

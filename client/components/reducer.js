@@ -5,7 +5,8 @@ const defaultState = {
   name: '',
   age: null,
   favoriteCity: '',
-  itemsChose: []
+  // itemsChose: []
+  item: ''
 };
 
 
@@ -14,7 +15,10 @@ const Reducer = (state = defaultState, action) => {
   switch(action.type){
     case 'ITEM':
       console.log("action", action)
-      return Object.assign({}, state, { itemsChose: state.itemsChose.concat(action.data) })
+      return Object.assign({}, state, { item: action.data })
+    // case 'ITEM':
+    //   console.log("action", action)
+    //   return Object.assign({}, state, { itemsChose: state.itemsChose.concat(action.data) })
     case 'GET_EVERYONE':
       return Object.assign({}, state, { people: action.data });
     case 'NAME':

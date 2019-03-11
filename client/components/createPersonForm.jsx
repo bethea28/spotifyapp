@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updatePerson, createPerson } from './action';
+import store from '../store/store';
 
 class CreatePersonForm extends Component {
   constructor(props){

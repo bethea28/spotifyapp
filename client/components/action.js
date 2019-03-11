@@ -40,11 +40,12 @@ export const selectChange = data => ({
 })
 
 export const createPerson = ({ name, favoriteCity, age }) => dispatch => {
-  console.log('creatpers')
+  console.log('creatpers', store.getState())
   axios.post('/api/person', {
     name: name,
     favoriteCity: favoriteCity,
     age: age,
+    ItemId: store.getState().item
   })
     .then(({ data }) => {
       dispatch(addPerson(data));
